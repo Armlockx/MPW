@@ -29,7 +29,7 @@ interface Batch {
     updated_at: string;
 }
 
-const props = defineProps<{
+defineProps<{
     batches: Batch[];
 }>();
 
