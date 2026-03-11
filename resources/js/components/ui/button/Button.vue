@@ -10,6 +10,8 @@ interface Props extends PrimitiveProps {
   variant?: ButtonVariants["variant"]
   size?: ButtonVariants["size"]
   class?: HTMLAttributes["class"]
+  /** Accessible name for icon-only buttons (used as aria-label). */
+  ariaLabel?: string
 }
 
 const props = withDefaults(defineProps<Props>(), {
@@ -22,6 +24,7 @@ const props = withDefaults(defineProps<Props>(), {
     data-slot="button"
     :as="as"
     :as-child="asChild"
+    :aria-label="ariaLabel"
     :class="cn(buttonVariants({ variant, size }), props.class)"
   >
     <slot />

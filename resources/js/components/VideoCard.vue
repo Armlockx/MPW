@@ -119,7 +119,7 @@ function formatFileSize(bytes: number): string {
                 <Tooltip>
                     <TooltipTrigger as-child>
                         <a :href="videosDownload(video.id).url">
-                            <Button variant="outline" size="icon-sm">
+                            <Button variant="outline" size="icon-sm" aria-label="Download do vídeo processado">
                                 <Download class="size-4" />
                             </Button>
                         </a>
@@ -135,6 +135,7 @@ function formatFileSize(bytes: number): string {
                             variant="outline"
                             size="icon-sm"
                             class="text-destructive hover:bg-destructive hover:text-white"
+                            aria-label="Excluir vídeo"
                             @click="emit('delete', video)"
                         >
                             <Trash2 class="size-4" />

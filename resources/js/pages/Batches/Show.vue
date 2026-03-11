@@ -143,14 +143,16 @@ onBeforeUnmount(() => {
 </script>
 
 <template>
-    <Head :title="batch.name" />
+    <Head :title="batch.name">
+        <meta name="description" :content="`Detalhes do lote ${batch.name}. Acompanhe o progresso e faça download dos vídeos processados.`" />
+    </Head>
 
     <AppLayout :breadcrumbs="breadcrumbs">
         <div class="flex h-full flex-1 flex-col gap-6 p-4">
             <div class="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
                 <div class="flex items-center gap-4">
                     <Link :href="batchesIndex().url">
-                        <Button variant="outline" size="icon-sm">
+                        <Button variant="outline" size="icon-sm" aria-label="Voltar">
                             <ArrowLeft class="size-4" />
                         </Button>
                     </Link>
@@ -195,6 +197,7 @@ onBeforeUnmount(() => {
                 </div>
             </div>
 
+            <h2 class="sr-only">Conteúdo do lote</h2>
             <div class="grid gap-6 lg:grid-cols-3">
                 <div class="space-y-6 lg:col-span-2">
                     <Card v-if="batch.videos_count > 0">

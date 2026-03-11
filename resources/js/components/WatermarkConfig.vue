@@ -174,6 +174,7 @@ function removeImage() {
                         type="button"
                         variant="outline"
                         size="icon-sm"
+                        aria-label="Remover imagem"
                         @click="removeImage"
                     >
                         <X class="size-4" />

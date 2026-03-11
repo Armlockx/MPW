@@ -76,13 +76,15 @@ function submit() {
 </script>
 
 <template>
-    <Head title="Novo Lote" />
+    <Head title="Novo Lote">
+        <meta name="description" content="Configure as opções de processamento para um novo lote de vídeos: nome, velocidade e marca d'água." />
+    </Head>
 
     <AppLayout :breadcrumbs="breadcrumbs">
         <div class="flex h-full flex-1 flex-col gap-6 p-4">
             <div class="flex items-center gap-4">
                 <Link :href="batchesIndex().url">
-                    <Button variant="outline" size="icon-sm">
+                    <Button variant="outline" size="icon-sm" aria-label="Voltar">
                         <ArrowLeft class="size-4" />
                     </Button>
                 </Link>
@@ -94,6 +96,7 @@ function submit() {
                 </div>
             </div>
 
+            <h2 class="sr-only">Configuração do lote</h2>
             <form
                 @submit.prevent="submit"
                 :class="watermarkEnabled

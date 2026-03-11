@@ -64,7 +64,9 @@ function deleteBatch(batch: Batch) {
 </script>
 
 <template>
-    <Head title="Lotes" />
+    <Head title="Lotes">
+        <meta name="description" content="Gerencie seus lotes de processamento de vídeos. Crie lotes, adicione vídeos e aplique marca d'água em lote." />
+    </Head>
 
     <AppLayout :breadcrumbs="breadcrumbs">
         <div class="flex h-full flex-1 flex-col gap-6 p-4">
@@ -88,7 +90,7 @@ function deleteBatch(batch: Batch) {
                     <FolderOpen class="text-muted-foreground size-8" />
                 </div>
                 <div class="text-center">
-                    <h3 class="text-lg font-semibold">Nenhum lote criado</h3>
+                    <h2 class="text-lg font-semibold">Nenhum lote criado</h2>
                     <p class="text-muted-foreground mt-1 text-sm">
                         Crie seu primeiro lote para começar a processar vídeos.
                     </p>
@@ -101,7 +103,9 @@ function deleteBatch(batch: Batch) {
                 </Link>
             </div>
 
-            <div v-else class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            <div v-else>
+                <h2 id="batches-list-heading" class="sr-only">Lista de lotes</h2>
+                <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3" role="region" aria-labelledby="batches-list-heading">
                 <Card
                     v-for="batch in batches"
                     :key="batch.id"
@@ -157,12 +161,14 @@ function deleteBatch(batch: Batch) {
                             variant="outline"
                             size="icon-sm"
                             class="text-destructive hover:bg-destructive hover:text-white"
+                            aria-label="Excluir lote"
                             @click="deleteBatch(batch)"
                         >
                             <Trash2 class="size-4" />
                         </Button>
                     </CardFooter>
                 </Card>
+                </div>
             </div>
         </div>
     </AppLayout>
